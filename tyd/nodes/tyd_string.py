@@ -24,4 +24,5 @@ class TydString(TydNode):
         self._value = value
 
     def __str__(self) -> str:
-        return f"{self.name if self.name is not None else 'NullName'}=\"{self.value}\""
+        value = "null" if self.value is None else f'"{self.value}"'
+        return f"{self.name}={value}"
