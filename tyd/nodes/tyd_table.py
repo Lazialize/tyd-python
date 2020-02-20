@@ -1,3 +1,4 @@
+from __future__ import annotations
 from typing import Optional
 
 from .tyd_collection import TydCollection
@@ -13,3 +14,13 @@ class TydTable(TydCollection):
 
     def __str__(self):
         return f'<TydTable name="{self.name}" parent=<{self.parent.name if self.parent else "NullName"}>>'
+
+    def __eq__(self, value: TydTable):
+        flag = True
+
+        for node in value:
+            if node not in self.nodes:
+                flag = False
+                break
+
+        return super().__eq__(value) and flag

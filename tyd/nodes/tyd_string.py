@@ -1,3 +1,4 @@
+from __future__ import annotations
 from typing import Optional
 
 from .tyd_node import TydNode
@@ -26,3 +27,6 @@ class TydString(TydNode):
     def __str__(self) -> str:
         value = "null" if self.value is None else f'"{self.value}"'
         return f"{self.name}={value}"
+
+    def __eq__(self, value: TydString) -> bool:
+        return super().__eq__(value) and self.value == value.value

@@ -28,3 +28,6 @@ class TydNode(metaclass=ABCMeta):
     @property
     def name(self) -> Optional[str]:
         return self._name
+
+    def __eq__(self, value: TydNode) -> bool:
+        return self.name == value.name and self.parent == value.parent

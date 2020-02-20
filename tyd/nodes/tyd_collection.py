@@ -1,3 +1,4 @@
+from __future__ import annotations
 from abc import ABCMeta
 from typing import List, Optional
 
@@ -137,3 +138,6 @@ class TydCollection(TydNode, metaclass=ABCMeta):
 
     def __getitem__(self, key: int) -> TydNode:
         return self._nodes[key]
+
+    def __eq__(self, value: TydCollection) -> bool:
+        return super().__eq__(value) and self.nodes == value.nodes
