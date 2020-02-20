@@ -11,6 +11,10 @@ class TydNode(metaclass=ABCMeta):
         parent: Optional[TydNode] = None,
         docline: int = -1,
     ):
+        if name == "":
+            raise Exception(
+                "The name of the node must be None or string of one or more letters."
+            )
         self._name = name
         self._parent = parent
 
