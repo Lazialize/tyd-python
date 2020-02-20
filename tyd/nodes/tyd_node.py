@@ -11,6 +11,10 @@ class TydNode(metaclass=ABCMeta):
         parent: Optional[TydNode] = None,
         docline: int = -1,
     ):
+        if name == "":
+            raise Exception(
+                "The name of the node must be None or string of one or more letters."
+            )
         self._name = name
         self._parent = parent
 
@@ -28,3 +32,11 @@ class TydNode(metaclass=ABCMeta):
     @property
     def name(self) -> Optional[str]:
         return self._name
+
+    def to_tyd(self):
+        from ..tyd_to_text import write
+
+        return write(self)
+
+    def __eq__(self, value: TydNode) -> bool:
+        return self.name == value.name and self.parent == value.parent

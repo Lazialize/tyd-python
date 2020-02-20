@@ -1,0 +1,6 @@
+TestCase001
+{
+    name testcase_001
+    description this is a test file for tyd parser
+    content test
+}
