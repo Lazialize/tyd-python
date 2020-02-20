@@ -21,8 +21,8 @@ class TydString(TydNode):
         return self._value
 
     @value.setter
-    def value(self, value: Optional[str]) -> None:
-        self._value = value
+    def value(self, value: Optional[str]):
+        self._value = str(value)
 
     def __str__(self) -> str:
         value = "null" if self.value is None else f'"{self.value}"'
